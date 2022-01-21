@@ -1,12 +1,30 @@
-import dashboard from './dashboard';
-import pages from './pages';
-import utilities from './utilities';
-import other from './other';
+import { IconWriting, IconBook2, IconDashboard } from "@tabler/icons";
 
-// ==============================|| MENU ITEMS ||============================== //
-
-const menuItems = {
-    items: [dashboard, pages, utilities, other]
-};
+const menuItems = [
+	{
+		id: "dashboard",
+		title: "Dashboard",
+		type: "item",
+		url: "/",
+		icon: IconDashboard,
+		breadcrumbs: false,
+	},
+	{
+		id: "author",
+		title: "Authors",
+		type: "item",
+		url: "/authors",
+		icon: IconWriting,
+		breadcrumbs: false,
+	},
+	{
+		id: "book",
+		title: "Books",
+		type: "item",
+		url: "/books",
+		icon: IconBook2,
+		breadcrumbs: false,
+	},
+];
 
 export default menuItems;

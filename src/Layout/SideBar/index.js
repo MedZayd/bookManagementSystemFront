@@ -1,16 +1,9 @@
 import PropTypes from "prop-types";
-
-// material-ui
 import { useTheme } from "@mui/material/styles";
 import { Box, Drawer, useMediaQuery } from "@mui/material";
-
-// third-party
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { BrowserView, MobileView } from "react-device-detect";
-
-// project imports
-import MenuList from "./MenuList";
-import MenuCard from "./MenuCard";
+import MenuList from "../MenuList";
 
 // ==============================|| SIDEBAR DRAWER ||============================== //
 
@@ -28,16 +21,15 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
 						height: !matchUpMd ? "calc(100vh - 56px)" : "calc(100vh - 88px)",
 						paddingLeft: "16px",
 						paddingRight: "16px",
+						paddingTop: "16px",
 					}}
 				>
 					<MenuList />
-					<MenuCard />
 				</PerfectScrollbar>
 			</BrowserView>
 			<MobileView>
 				<Box sx={{ px: 2 }}>
 					<MenuList />
-					<MenuCard />
 				</Box>
 			</MobileView>
 		</>
@@ -65,7 +57,7 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
 						color: theme.palette.text.primary,
 						borderRight: "none",
 						[theme.breakpoints.up("md")]: {
-							top: "88px",
+							top: 64,
 						},
 					},
 				}}

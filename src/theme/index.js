@@ -13,10 +13,22 @@ const theme = createTheme({
 		success: {
 			main: "#69F0AE",
 		},
+		error: {
+			main: "#F44336",
+		},
 	},
 	typography: {
 		fontFamily: "Poppins, Roboto",
 		fontSize: 12,
+	},
+	components: {
+		MuiTypography: {
+			styleOverrides: {
+				root: {
+					fontFamily: "Poppins, Roboto",
+				},
+			},
+		},
 	},
 });
 
