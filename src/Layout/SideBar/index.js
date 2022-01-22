@@ -8,7 +8,7 @@ import MenuList from "../MenuList";
 // ==============================|| SIDEBAR DRAWER ||============================== //
 
 const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
-	const drawerWidth = 260;
+	const drawerWidth = drawerOpen ? 260 : 0;
 	const theme = useTheme();
 	const matchUpMd = useMediaQuery(theme.breakpoints.up("md"));
 
@@ -24,12 +24,12 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
 						paddingTop: "16px",
 					}}
 				>
-					<MenuList />
+					<MenuList drawerOpen={drawerOpen} />
 				</PerfectScrollbar>
 			</BrowserView>
 			<MobileView>
-				<Box sx={{ px: 2 }}>
-					<MenuList />
+				<Box sx={{ px: 2, paddingTop: "60px" }}>
+					<MenuList drawerOpen={drawerOpen} />
 				</Box>
 			</MobileView>
 		</>

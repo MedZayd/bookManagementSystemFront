@@ -6,13 +6,25 @@ import Typography from "@mui/material/Typography";
 import React from "react";
 import Sidebar from "./SideBar";
 import Routes from "../routes";
+import Loader from "../features/Loader";
+import { IconButton } from "@mui/material";
+import { IconMenu2 } from "@tabler/icons";
+import { useSelector, useDispatch } from "react-redux";
+import { selectDrawer, setDrawer } from "../features/Drawer/drawerSlice";
+import Toast from "../features/Toast";
 
 const Layout = () => {
+	const dispatch = useDispatch();
+	const drawerOpen = useSelector(selectDrawer);
+
+	const handleToggleDrawer = () => dispatch(setDrawer(!drawerOpen));
+
 	return (
 		<Box
 			sx={{
 				display: "flex",
 				backgroundColor: "primary.lighter",
+				minWidth: "370px",
 			}}
 		>
 			<CssBaseline />
@@ -26,6 +38,17 @@ const Layout = () => {
 				}}
 			>
 				<Toolbar>
+					<IconButton
+						size="large"
+						edge="start"
+						color="inherit"
+						aria-label="open drawer"
+						sx={{ mr: 2 }}
+						onClick={handleToggleDrawer}
+					>
+						<IconMenu2 />
+					</IconButton>
+
 					<Typography
 						variant="h6"
 						noWrap
@@ -39,7 +62,7 @@ const Layout = () => {
 				</Toolbar>
 			</AppBar>
 
-			<Sidebar drawerOpen={true} drawerToggle={() => {}} />
+			<Sidebar drawerOpen={drawerOpen} drawerToggle={handleToggleDrawer} />
 
 			<Box
 				component="div"
@@ -62,6 +85,8 @@ const Layout = () => {
 					<Routes />
 				</Box>
 			</Box>
+			<Loader />
+			<Toast />
 		</Box>
 	);
 };

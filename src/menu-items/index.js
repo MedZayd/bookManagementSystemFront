@@ -18,6 +18,14 @@ const menuItems = [
 		breadcrumbs: false,
 	},
 	{
+		id: "category",
+		title: "Categories",
+		type: "item",
+		url: "/categories",
+		icon: IconWriting,
+		breadcrumbs: false,
+	},
+	{
 		id: "book",
 		title: "Books",
 		type: "item",

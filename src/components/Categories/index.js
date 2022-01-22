@@ -4,24 +4,25 @@ import React from "react";
 import { type } from "../../utils/constants";
 import CButton from "../../ui-components/CButton";
 import DataTable from "../../ui-components/DataTable";
-import AuthorForm from "./AuthorForm";
+import Form from "./Form";
 import { formConfig } from "./config";
 
-const Authors = ({
+const Categories = ({
 	initialValues,
 	formOpen,
 	formType,
 	columns,
 	rows,
+	options,
 	onCloseForm,
 	onOpenForm,
-	onSaveAuthor,
-	onDeleteAuthor,
+	onSave,
+	onDelete,
 }) => {
 	const formik = useFormik({
 		initialValues: initialValues,
 		validationSchema: formConfig.validation,
-		onSubmit: onSaveAuthor,
+		onSubmit: onSave,
 		enableReinitialize: true,
 	});
 
@@ -35,13 +36,13 @@ const Authors = ({
 			<Grid container direction="column" spacing={4}>
 				<Grid item>
 					<Typography variant="h5" sx={{ fontFamily: "Poppins" }}>
-						Authors
+						Categories
 					</Typography>
 				</Grid>
 				<Grid item>
 					<CButton
 						type="primary"
-						content={"Create a new author"}
+						content={"Add category"}
 						onClick={() => onOpenForm(type.CREATE)}
 					/>
 				</Grid>
@@ -50,17 +51,18 @@ const Authors = ({
 				</Grid>
 			</Grid>
 			{formOpen && (
-				<AuthorForm
+				<Form
 					formik={formik}
+					options={options}
 					formType={formType}
 					open={formOpen}
 					onCloseForm={onResetForm}
 					type={formType}
-					onDeleteAuthor={onDeleteAuthor}
+					onDelete={onDelete}
 				/>
 			)}
 		</>
 	);
 };
 
-export default Authors;
+export default Categories;

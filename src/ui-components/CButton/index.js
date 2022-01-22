@@ -47,6 +47,30 @@ const CButton = ({ type, content, onClick, ...props }) => {
 					{content}
 				</Button>
 			);
+
+		case "danger":
+			return (
+				<Button
+					variant="outlined"
+					onClick={onClick}
+					{...props}
+					sx={{
+						minWidth: 120,
+						fontFamily: "Poppins",
+						borderColor: "error.light",
+						color: "error.light",
+						boxShadow: "none",
+						"&:hover": {
+							backgroundColor: "error.light",
+							borderColor: "error.light",
+							color: "white",
+							boxShadow: "none",
+						},
+					}}
+				>
+					{content}
+				</Button>
+			);
 		default:
 			return (
 				<Button

@@ -11,7 +11,7 @@ import {
 
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
-const NavItem = ({ item, ...listItemProps }) => {
+const NavItem = ({ item, drawerOpen, ...listItemProps }) => {
 	const navigate = useNavigate();
 	const Icon = item.icon;
 	const itemIcon = item?.icon ? (
@@ -43,16 +43,18 @@ const NavItem = ({ item, ...listItemProps }) => {
 			<ListItemIcon sx={{ my: "auto", minWidth: !item?.icon ? 18 : 36 }}>
 				{itemIcon}
 			</ListItemIcon>
-			<ListItemText
-				primary={
-					<Typography
-						variant={"h5"}
-						sx={{ fontFamily: "Poppins", fontSize: "20px" }}
-					>
-						{item.title}
-					</Typography>
-				}
-			/>
+			{drawerOpen && (
+				<ListItemText
+					primary={
+						<Typography
+							variant={"h5"}
+							sx={{ fontFamily: "Poppins", fontSize: "20px" }}
+						>
+							{item.title}
+						</Typography>
+					}
+				/>
+			)}
 		</ListItemButton>
 	);
 };

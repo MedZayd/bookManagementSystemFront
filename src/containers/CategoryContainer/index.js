@@ -1,69 +1,40 @@
 import { IconEdit, IconTrash } from "@tabler/icons";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { formConfig } from "../../components/Books/config";
+import Categories from "../../components/Categories";
+import { formConfig } from "../../components/Categories/config";
 import CIconBtn from "../../ui-components/CIconBtn";
 import {
-	deleteBook,
-	fetchBooks,
-	fetchFormData,
-	refreshStatus,
-	saveBook,
-	selectBooks,
-	selectFormData,
+	saveCategory,
+	fetchCatgories,
+	selectCategories,
 	selectStatus,
-} from "./bookSlice";
+	refreshStatus,
+	deleteCategory,
+	fetchParentCategories,
+	selectOptions,
+} from "./categorySlice";
 import { STATUS, type } from "../../utils/constants";
-import Books from "../../components/Books";
-import { convertListToString, getFormattedDate } from "../../utils";
-import { Avatar } from "@mui/material";
-
-const renderAvatar = (params, key) => {
-	console.log(params.row);
-	return <Avatar alt="Remy Sharp" src={params.row.photoLink} />;
-};
 
 const getColumns = (onAction) => [
 	{ field: "id", headerName: "ID", sortable: false, width: 60 },
 	{
-		field: "title",
-		headerName: "Title",
+		field: "name",
+		headerName: "Category",
 		sortable: false,
 		width: 160,
 		flex: 1,
 	},
 	{
-		field: "totalPages",
-		headerName: "Total Pages",
+		field: "parentId",
+		headerName: "Parent Id",
 		sortable: false,
-		flex: 1,
 	},
 	{
-		field: "publishedDate",
-		headerName: "Published Date",
-		sortable: false,
-		valueGetter: (params) => getFormattedDate(params, "publishedDate"),
-		flex: 1,
-	},
-	{
-		field: "authorName",
-		headerName: "Author",
+		field: "parentName",
+		headerName: "Parent Category",
 		sortable: false,
 		flex: 1,
-	},
-	{
-		field: "categories",
-		headerName: "Categories",
-		sortable: false,
-		valueGetter: (params) => convertListToString(params, "categories"),
-		flex: 1,
-	},
-	{
-		field: "photoLink",
-		headerName: "Photo",
-		sortable: false,
-		width: 120,
-		renderCell: (params) => renderAvatar(params, "photoLink"),
 	},
 	{
 		field: "",
@@ -87,42 +58,41 @@ const getColumns = (onAction) => [
 	},
 ];
 
-const BookContainer = () => {
+const CategoryContainer = () => {
 	const [modal, setModal] = useState(false);
 	const [formType, setType] = useState(false);
-	const [book, setBook] = useState(formConfig.initialValues);
+	const [category, setCategory] = useState(formConfig.initialValues);
 
 	const dispatch = useDispatch();
-	const data = useSelector(selectBooks);
+	const data = useSelector(selectCategories);
 	const status = useSelector(selectStatus);
-	const formData = useSelector(selectFormData);
+	const options = useSelector(selectOptions);
 
 	const handleOpenModal = (type) => {
-		dispatch(fetchFormData());
+		dispatch(fetchParentCategories());
 		setType(type);
 		setModal(true);
 	};
 
 	const handleCloseModal = () => {
 		setModal(false);
-		setBook(formConfig.initialValues);
+		setCategory(formConfig.initialValues);
 	};
 
 	const handleAction = (row, type) => {
-		setBook(row);
+		setCategory(row);
 		handleOpenModal(type);
 	};
 
 	const handleDelete = (values) => {
-		dispatch(deleteBook(values.id));
+		dispatch(deleteCategory(values.id));
 	};
 
 	const handleSave = (values) => {
-		console.log(values);
-		dispatch(saveBook(values));
+		dispatch(saveCategory(values));
 	};
 
-	useEffect(() => dispatch(fetchBooks()), [dispatch]);
+	useEffect(() => dispatch(fetchCatgories()), [dispatch]);
 
 	useEffect(() => {
 		if (status === STATUS.SUCCESS) {
@@ -132,14 +102,14 @@ const BookContainer = () => {
 	}, [status, dispatch]);
 
 	return (
-		<Books
-			initialValues={book}
+		<Categories
+			initialValues={category}
 			formOpen={modal}
 			formType={formType}
 			columns={getColumns(handleAction)}
 			rows={data}
 			status={status}
-			formData={formData}
+			options={options}
 			onCloseForm={handleCloseModal}
 			onOpenForm={handleOpenModal}
 			onSave={handleSave}
@@ -148,4 +118,4 @@ const BookContainer = () => {
 	);
 };
 
-export default BookContainer;
+export default CategoryContainer;

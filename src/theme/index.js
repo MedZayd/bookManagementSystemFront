@@ -18,14 +18,14 @@ const theme = createTheme({
 		},
 	},
 	typography: {
-		fontFamily: "Poppins, Roboto",
+		fontFamily: ["Poppins", "Roboto", "Arial", "sans-serif"].join(","),
 		fontSize: 12,
 	},
 	components: {
 		MuiTypography: {
 			styleOverrides: {
 				root: {
-					fontFamily: "Poppins, Roboto",
+					fontFamily: ["Poppins", "Roboto", "Arial", "sans-serif"].join(","),
 				},
 			},
 		},

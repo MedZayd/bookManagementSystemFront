@@ -3,11 +3,11 @@ import Typography from "@mui/material/Typography";
 import menuItems from "../../menu-items";
 import NavItem from "./NavItem";
 
-const MenuList = () => {
+const MenuList = ({ drawerOpen }) => {
 	const navItems = menuItems.map((item) => {
 		switch (item.type) {
 			case "item":
-				return <NavItem key={item.id} item={item} />;
+				return <NavItem key={item.id} item={item} drawerOpen={drawerOpen} />;
 			default:
 				return (
 					<Typography key={item.id} variant="h6" color="error" align="center">

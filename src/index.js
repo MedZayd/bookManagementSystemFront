@@ -3,10 +3,23 @@ import ReactDOM from "react-dom";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import "./index.css";
 import App from "./App";
-import { store } from "./app/store";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
+
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import createSagaMiddleware from "redux-saga";
+import rootReducer from "./app/reducers";
+import rootSaga from "./app/sagas";
+
+const sagaMiddleware = createSagaMiddleware();
+
+const store = configureStore({
+	reducer: rootReducer,
+	middleware: [...getDefaultMiddleware(), sagaMiddleware],
+});
+
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
 	<React.StrictMode>

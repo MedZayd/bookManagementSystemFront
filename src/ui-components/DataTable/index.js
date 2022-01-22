@@ -2,12 +2,12 @@ import { DataGrid } from "@mui/x-data-grid";
 import React from "react";
 import PerfectScrollbar from "react-perfect-scrollbar";
 
-const DataTable = ({ columns, rows, ...props }) => {
+const DataTable = ({ columns, rows, width, ...props }) => {
 	return (
 		<PerfectScrollbar
 			component="div"
 			style={{
-				height: 440,
+				height: 420,
 				paddingBottom: "16px",
 			}}
 		>
@@ -19,7 +19,6 @@ const DataTable = ({ columns, rows, ...props }) => {
 				rowHeight={50}
 				pagination
 				pageSize={10}
-				checkboxSelection
 				sx={{
 					fontFamily: "Poppins",
 				}}
