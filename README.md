@@ -1,8 +1,16 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
+### `npm version`
+
+This project uses the node version 17.3.1, make you have the same version.
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+Use this command to install npm package.
 
 ### `npm start`
 
