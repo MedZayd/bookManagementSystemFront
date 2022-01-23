@@ -10,3 +10,8 @@ export const type = {
 	EDIT: "EDIT",
 	DELETE: "DELETE",
 };
+
+export const languages = {
+	FR: "fr",
+	EN: "en",
+};

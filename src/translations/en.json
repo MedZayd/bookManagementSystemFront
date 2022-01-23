@@ -1,0 +1,13 @@
+{
+	"common": {
+		"languages.title": "Languages",
+		"languages.language": "Language",
+		"languages.iso-code": "ISO Code",
+		"languages.add-btn": "add language",
+		"languages.create": "Create a new language",
+		"languages.alert": "Alert",
+		"languages.alert.description": "Please Confirm",
+		"languages.confirm": "Confirm",
+		"languages.cancel": "Cancel"
+	}
+}

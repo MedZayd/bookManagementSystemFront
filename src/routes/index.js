@@ -4,6 +4,7 @@ import AuthorContainer from "../containers/AuthorContainer";
 import BookContainer from "../containers/BookContainer";
 import CategoryContainer from "../containers/CategoryContainer";
 import DashboardContainer from "../containers/DashboardContainer";
+import LangContainer from "../containers/LangContainer";
 
 const index = () => {
 	return (
@@ -11,6 +12,7 @@ const index = () => {
 			<Route path="/authors" element={<AuthorContainer />} />
 			<Route path="/categories" element={<CategoryContainer />} />
 			<Route path="/books" element={<BookContainer />} />
+			<Route path="/languages" element={<LangContainer />} />
 			<Route path="/" element={<DashboardContainer />} />
 		</Routes>
 	);

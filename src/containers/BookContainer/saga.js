@@ -46,6 +46,10 @@ function* fetchFormDataSaga(action) {
 				value: cat.id,
 				label: cat.name,
 			})),
+			languages: data.languages.map((lang) => ({
+				value: lang.id,
+				label: lang.name,
+			})),
 		};
 		yield put(setFormData(formattedData));
 	} catch (e) {

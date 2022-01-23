@@ -7,6 +7,9 @@ import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
 
+import { I18nextProvider } from "react-i18next";
+import i18n from "./i18n";
+
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import rootReducer from "./app/reducers";
@@ -23,11 +26,13 @@ sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Provider store={store}>
-			<Router>
-				<App />
-			</Router>
-		</Provider>
+		<I18nextProvider i18n={i18n}>
+			<Provider store={store}>
+				<Router>
+					<App />
+				</Router>
+			</Provider>
+		</I18nextProvider>
 	</React.StrictMode>,
 	document.getElementById("root")
 );

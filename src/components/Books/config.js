@@ -15,6 +15,7 @@ const initialValues = {
 	authorId: "",
 	photoLink: "",
 	categoryIds: [],
+	languagesIds: [],
 };
 
 const fields = (formData) => [
@@ -56,9 +57,18 @@ const fields = (formData) => [
 	{
 		id: "categoryIds",
 		name: "categoryIds",
-		label: "Category",
+		label: "Categories",
 		type: "select",
 		options: formData.categories,
+		multiple: true,
+		xs: 12,
+	},
+	{
+		id: "languagesIds",
+		name: "languagesIds",
+		label: "Languages",
+		type: "select",
+		options: formData.languages,
 		multiple: true,
 		xs: 12,
 	},

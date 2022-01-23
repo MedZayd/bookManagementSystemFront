@@ -59,6 +59,13 @@ const getColumns = (onAction) => [
 		flex: 1,
 	},
 	{
+		field: "langs",
+		headerName: "Languages",
+		sortable: false,
+		valueGetter: (params) => convertListToString(params, "languages"),
+		flex: 1,
+	},
+	{
 		field: "photoLink",
 		headerName: "Photo",
 		sortable: false,

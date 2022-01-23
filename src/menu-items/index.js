@@ -1,4 +1,9 @@
-import { IconWriting, IconBook2, IconDashboard } from "@tabler/icons";
+import {
+	IconWriting,
+	IconBook2,
+	IconDashboard,
+	IconLanguage,
+} from "@tabler/icons";
 
 const menuItems = [
 	{
@@ -31,6 +36,14 @@ const menuItems = [
 		type: "item",
 		url: "/books",
 		icon: IconBook2,
+		breadcrumbs: false,
+	},
+	{
+		id: "language",
+		title: "Languages",
+		type: "item",
+		url: "/languages",
+		icon: IconLanguage,
 		breadcrumbs: false,
 	},
 ];

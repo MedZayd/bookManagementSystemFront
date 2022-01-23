@@ -33,6 +33,13 @@ const getColumns = (onAction) => [
 		flex: 1,
 	},
 	{
+		field: "emal",
+		headerName: "Email",
+		sortable: false,
+		width: 160,
+		flex: 1,
+	},
+	{
 		field: "birthDate",
 		headerName: "Birth Date",
 		sortable: false,

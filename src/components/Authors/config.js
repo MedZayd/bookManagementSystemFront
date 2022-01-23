@@ -14,6 +14,7 @@ const validation = Yup.object().shape({
 const initialValues = {
 	firstName: "",
 	lastName: "",
+	email: "",
 	birthDate: "",
 };
 
@@ -30,6 +31,12 @@ const fields = [
 		name: "lastName",
 		label: "Last Name",
 		required: true,
+		xs: 12,
+	},
+	{
+		id: "email",
+		name: "email",
+		label: "Email",
 		xs: 12,
 	},
 	{
